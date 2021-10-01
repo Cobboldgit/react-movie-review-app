@@ -1,6 +1,5 @@
 import React from "react";
 import ReviewClass from "./component/ReviewClass";
-import ReviewFunction from "./component/ReviewFunction";
 import "./App.css";
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
       >
         Function Component
       </h1>
-      <ReviewFunction />
     </div>
   );
 }

@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.card {
+  background: #fff;
+  box-shadow: 2px 2px 5px rgba(138, 138, 138, 0.548),
+    -2px -2px 5px rgba(138, 138, 138, 0.548);
+    padding: 40px 20px;
+  text-align: left;
+  font-size: 20px;
+  margin: 20px;
+  margin-left: calc(50%/2);
+  font-family: sans-serif;
+  word-wrap: break-word;
+  width: 50%;
+}

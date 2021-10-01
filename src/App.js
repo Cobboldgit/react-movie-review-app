@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ReviewClass from "./component/ReviewClass";
+import ReviewFunction from "./component/ReviewFunction";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1
+        style={{
+          textAlign: "center",
+          color: "dodgerblue",
+          backgroundColor: "gray",
+          padding: "30px",
+        }}
+      >
+        Class Component
+      </h1>
+      <ReviewClass />
+      <h1
+        style={{
+          textAlign: "center",
+          color: "dodgerblue",
+          backgroundColor: "gray",
+          padding: "30px",
+        }}
+      >
+        Function Component
+      </h1>
+      <ReviewFunction />
     </div>
   );
 }

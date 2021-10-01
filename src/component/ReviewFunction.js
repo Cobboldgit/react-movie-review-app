@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import Card from "./card/Card";
+import axios from "axios";
 
 function ReviewFunction() {
   const [review, setReview] = useState([]);
   const [term, setTerm] = useState("everything");
 
   async function getReview() {
-    fetch(
+    const response = await axios.get(
       `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${term}&api-key=${process.env.REACT_APP_MOVIE_REVIEW_API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((review) => {
-        console.log(review.results);
-        setReview(review.results);
-      });
+    );
+    setReview(response.data.results);
   }
 
   useEffect(() => {
@@ -21,18 +18,28 @@ function ReviewFunction() {
     getReview();
     return setReview([]);
   }, []);
+
   return (
     <div>
-      {review.map((item, index) => {
-        const { byline, display_title, critics_pick, headline } = item;
+      {review.map((reviews, index) => {
         return (
           <Card key={index}>
-            <div className="rev-card">
-              <p><span>Byline:</span>{headline}</p>
-              <p><span>Critic:</span>{display_title}</p>
-              <p><span>Title:</span>{critics_pick}</p>
-              <p><span>Headling:</span>{byline}</p>
-            </div>
+            <p>
+              <span>Headling:</span>
+              {reviews.headline}
+            </p>
+            <p>
+              <span>Title:</span>
+              {reviews.display_title}
+            </p>
+            <p>
+              <span>Critic:</span>
+              {reviews.critics_pick}
+            </p>
+            <p>
+              <span>Byline:</span>
+              {reviews.byline}
+            </p>
           </Card>
         );
       })}

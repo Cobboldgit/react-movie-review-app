@@ -15,7 +15,6 @@ export default class ReviewClass extends Component {
     )
       .then((response) => response.json())
       .then((review) => {
-        console.log(review.results);
         this.setState({ review: review.results });
       });
   }

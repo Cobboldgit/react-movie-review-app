@@ -8,7 +8,7 @@ function ReviewFunction() {
 
   async function getReview() {
     const response = await axios.get(
-      `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${term}&api-key=t3mQiWiUT5DyCTxCJ4mtlMRjeNlG5XlS`
+      `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${term}&api-key=vcxfMGWpn2o5XtPHCZAVlKuzlSW9FYG0`
     );
     setReview(response.data.results);
   }

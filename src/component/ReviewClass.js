@@ -11,7 +11,7 @@ export default class ReviewClass extends Component {
   }
   async getReview() {
     fetch(
-      `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${this.state.term}&api-key=${process.env.REACT_APP_MOVIE_REVIEW_API_KEY}`
+      `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${this.state.term}&api-key=vcxfMGWpn2o5XtPHCZAVlKuzlSW9FYG0`
     )
       .then((response) => response.json())
       .then((review) => {
@@ -27,24 +27,32 @@ export default class ReviewClass extends Component {
     this.setState({ review: [] });
   }
 
- 
-
   render() {
     return (
       <div>
         {this.state.review.map((item, index) => {
           const { byline, display_title, critics_pick, headline } = item;
           return (
-            
-              <Card  key={index}>
+            <Card key={index}>
               <div className="rev-card">
-                <div><span>Byline:</span>{byline}</div>
-                <div><span>Critic:</span>{critics_pick}</div>
-                <div><span>Title:</span>{display_title}</div>
-                <div><span>Headling:</span>{headline}</div>
+                <div>
+                  <span>Byline:</span>
+                  {byline}
+                </div>
+                <div>
+                  <span>Critic:</span>
+                  {critics_pick}
+                </div>
+                <div>
+                  <span>Title:</span>
+                  {display_title}
+                </div>
+                <div>
+                  <span>Headling:</span>
+                  {headline}
+                </div>
               </div>
-              </Card>
-            
+            </Card>
           );
         })}
       </div>

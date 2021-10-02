@@ -7,6 +7,7 @@ export default class ReviewClass extends Component {
     this.state = {
       review: [],
       term: "everything",
+      isLoading: true
     };
   }
   async getReview() {
@@ -15,7 +16,7 @@ export default class ReviewClass extends Component {
     )
       .then((response) => response.json())
       .then((review) => {
-        this.setState({ review: review.results });
+        this.setState({ review: review.results, isLoading: false });
       });
   }
 
@@ -30,31 +31,35 @@ export default class ReviewClass extends Component {
   render() {
     return (
       <div>
-        {this.state.review.map((item, index) => {
-          const { byline, display_title, critics_pick, headline } = item;
-          return (
-            <Card key={index}>
-              <div className="rev-card">
-                <div>
-                  <span>Byline:</span>
-                  {byline}
+        {this.state.isLoading ? (
+          <p className="isLoading">Loading...</p>
+        ):(
+          this.state.review.map((item, index) => {
+            const { byline, display_title, critics_pick, headline } = item;
+            return (
+              <Card key={index}>
+                <div className="rev-card">
+                  <div>
+                    <span>Byline:</span>
+                    {byline}
+                  </div>
+                  <div>
+                    <span>Critic:</span>
+                    {critics_pick}
+                  </div>
+                  <div>
+                    <span>Title:</span>
+                    {display_title}
+                  </div>
+                  <div>
+                    <span>Headling:</span>
+                    {headline}
+                  </div>
                 </div>
-                <div>
-                  <span>Critic:</span>
-                  {critics_pick}
-                </div>
-                <div>
-                  <span>Title:</span>
-                  {display_title}
-                </div>
-                <div>
-                  <span>Headling:</span>
-                  {headline}
-                </div>
-              </div>
-            </Card>
-          );
-        })}
+              </Card>
+            );
+          })
+        )}
       </div>
     );
   }

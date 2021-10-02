@@ -5,3 +5,19 @@ span {
   margin-right: 10px;
   color: dodgerblue;
 }
+
+.isLoading {
+  font-size: 40px;
+  font-family: sans-serif;
+  font-weight: 500;
+  margin: 3rem 3rem;
+  color: #000;
+  text-align: center;
+  animation: isLoading 7s ease infinite;
+}
+
+@keyframes isLoading {
+  0% {letter-spacing: normal;}
+  50% {letter-spacing: 5px;}
+  100% {letter-spacing: normal;}
+}
